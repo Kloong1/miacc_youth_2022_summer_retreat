@@ -1,7 +1,7 @@
 .DS_Store
-
 HELP.md
-
 .gradle
-
 .idea
+
+build/*
+out/*

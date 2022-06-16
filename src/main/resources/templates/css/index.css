@@ -1,0 +1,16 @@
+body {
+    background-color: black;
+    color: lime;
+    font-family: DungGeunMo, sans-serif;
+    font-size: large;
+}
+
+@font-face {
+    font-family: D2Coding;
+    src: url(/templates/fonts/D2Coding.ttc);
+}
+
+@font-face {
+    font-family: DungGeunMo;
+    src: url(/templates/fonts/DungGeunMo.woff2);
+}

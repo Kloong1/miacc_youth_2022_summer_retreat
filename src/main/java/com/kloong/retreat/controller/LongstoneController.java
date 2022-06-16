@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LongstoneController {
     @GetMapping
     public String password() {
-        return "/longstone/longstonePassword";
+        return "html/longstone/longstonePassword";
     }
 
     @PostMapping
     public String getInfo(@RequestParam String password) {
         if (!password.equals("19961213")) {
-            return "wrongPassword";
+            return "html/wrongPassword";
         }
-        return "/longstone/longstoneInfo";
+        return "html/longstone/longstoneInfo";
     }
 }
