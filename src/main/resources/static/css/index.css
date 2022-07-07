@@ -3,6 +3,7 @@ body {
     color: lime;
     font-family: DungGeunMo, sans-serif;
     font-size: large;
+    width: 90%;
 }
 
 @font-face {
