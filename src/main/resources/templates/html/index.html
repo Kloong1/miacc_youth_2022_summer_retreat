@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<link rel="stylesheet" href="/css/stylesheet.css">
+<body>
+
+<div th:replace="~{html/fragment/header :: header ('/home')}"></div>
+
+<h1>#기록 - 잃어버린 스톤에 대한 정보</h1>
+
+<h3>815 지구 요원 김요환</h3>
+<div>
+    나는 815 지구에서 스톤을 찾으러 온 기묘한 김요환 요원이다. 오랜 조사 끝에 스톤이 숨겨져있는 장소에 대한 정보를 알아냈고, 그 정보들을 기록으로 남겨둔다.
+</div>
+
+<div>
+    나는 이 기록들이 적의 손에 넘어가는 것을 방지하기 위해 모든 기록에 암호를 걸어뒀다. 815 지구에서 온 요원들이 아니라면 이 암호를 쉽게 풀 수는 없을 것이다.
+</div>
+<div>
+    이 기록을 발견했다면, 부디 나 대신 스톤을 찾아서 815 지구의 멸망을 막아주기를...
+</div>
+
+<div>
+  <ul>
+    <li><a href="/stones/disciple" target="_blank">미션 #1 - 디사이플 스톤</a></li>
+      <li><a href="/stones/agape" target="_blank">미션 #2 - 아가페 스톤</a></li>
+      <li><a href="/stones/truth" target="_blank">미션 #3 - 트루 스톤</a></li>
+      <li><a href="/stones/vision" target="_blank">미션 #4 - 비전 스톤</a></li>
+  </ul>
+</div>
+
+<div>
+    <iframe width="1099" height="618" src="https://www.youtube.com/embed/a12ZwB37mTo" title="쭈펄 재즈 페스티벌" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+</body>
+</html>

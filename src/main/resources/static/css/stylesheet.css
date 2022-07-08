@@ -3,11 +3,12 @@ body {
     color: lime;
     font-family: DungGeunMo, sans-serif;
     font-size: large;
+    width: 90%;
 }
 
-@font-face {
-    font-family: D2Coding;
-    src: url(/templates/fonts/D2Coding.ttc);
+hr {
+    border-style: dashed;
+    background-size: 30px 3px;
 }
 
 @font-face {

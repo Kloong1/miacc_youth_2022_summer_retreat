@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="header (path)">
+    <hr>
+    <div th:text="|/stones ${path}|"> </div>
+    <hr>
+</div>
+
+<div th:fragment="test">
+    <hr>
+</div>
+
+</body>
+</html>
