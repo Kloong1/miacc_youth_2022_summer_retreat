@@ -2,14 +2,14 @@
 <html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<div th:fragment="header (path)">
+<div id="header" th:fragment="header (path)">
     <hr>
     <div th:text="|/stones ${path}|"> </div>
     <hr>
 </div>
 
-<div th:fragment="test">
-    <hr>
+<div th:fragment="title (title)">
+    <h2 id="title" th:text="${title}"></h2>
 </div>
 
 </body>

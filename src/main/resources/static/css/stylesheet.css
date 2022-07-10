@@ -2,13 +2,32 @@ body {
     background-color: black;
     color: lime;
     font-family: DungGeunMo, sans-serif;
-    font-size: large;
-    width: 90%;
+    font-size: x-large;
+    width: 95%;
+    margin-left: 2.5%;
 }
 
 hr {
     border-style: dashed;
     background-size: 30px 3px;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    width: 100%;
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+}
+
+#header>div {
+    font-size: xx-large;
+    float: right;
+    margin-left: auto;
+}
+
+#title {
+    margin-top: 0;
 }
 
 @font-face {
