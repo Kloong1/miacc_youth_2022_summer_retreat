@@ -1,45 +1,58 @@
+
 <!DOCTYPE html>
-<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/bootstra.386/dist/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <link href="/bootstra.386/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
 </head>
-<link rel="stylesheet" href="/css/stylesheet.css">
+
 <body>
 
-<div th:replace="~{html/fragment/header :: header ('/home')}"></div>
-
-<th:block th:replace="~{html/fragment/header :: title ('미션 제목, 주제 등')}" />
-
-<div>
-    <p>
-        여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다.
-        여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다.
-        여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다.
-    </p>
-
-    <p>
-        여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다.
-        여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다.
-        여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다.
-    </p>
-
-    <p>
-        여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다.
-        여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다.
-        여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다. 여기는 내용입니다.
-    </p>
-
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">Project name</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
 </div>
 
-<div>
-  <ul>
-    <li><a href="/stones/disciple" target="_blank">미션 #1 - 디사이플 스톤</a></li>
-      <li><a href="/stones/agape" target="_blank">미션 #2 - 아가페 스톤</a></li>
-      <li><a href="/stones/truth" target="_blank">미션 #3 - 트루 스톤</a></li>
-      <li><a href="/stones/vision" target="_blank">미션 #4 - 비전 스톤</a></li>
-  </ul>
-</div>
+<div class="container">
+
+    <h1>Bootstrap starter template</h1>
+    <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+
+</div> <!-- /container -->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
 
 </body>
 </html>
