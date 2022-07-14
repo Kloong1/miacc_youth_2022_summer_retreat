@@ -2,6 +2,7 @@
 HELP.md
 .gradle
 .idea
+passwords
 
 build/*
 out/*
