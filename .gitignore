@@ -4,5 +4,7 @@ HELP.md
 .idea
 passwords
 
+src/test
+
 build/*
 out/*
