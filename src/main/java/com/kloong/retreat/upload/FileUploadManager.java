@@ -5,32 +5,27 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Component
 public class FileUploadManager {
 
     private static long id = 0;
 
-    private final static String UPLOAD_DIR_PATH = "/home/ubuntu/upload";
+    public final static String UPLOAD_DIR_PATH = "/home/ubuntu/upload";
+//    public final static String UPLOAD_DIR_PATH = "/Users/kloong/temp";
 
-    public File upload(MultipartFile file, String... dirs) {
+    public File upload(MultipartFile file) {
         String fileName = ++id + "_" + file.getOriginalFilename();
+        String path = UPLOAD_DIR_PATH + File.separator + fileName;
+        File newFile = new File(path);
 
-        String path = UPLOAD_DIR_PATH + File.separator +
-                String.join(File.separator, dirs) + File.separator +
-                fileName;
-
-        File uploadedFile = new File(path);
         try {
-            file.transferTo(uploadedFile);
+            file.transferTo(newFile);
         } catch (IOException e) {
             --id;
             throw new RuntimeException(e);
         }
 
-        return uploadedFile;
+        return newFile;
     }
 }

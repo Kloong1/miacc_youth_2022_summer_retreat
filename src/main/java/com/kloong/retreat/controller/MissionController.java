@@ -1,60 +1,67 @@
 package com.kloong.retreat.controller;
 
-import com.kloong.retreat.log.MissionClearLogger;
+import com.kloong.retreat.log.MissionLogger;
 import com.kloong.retreat.password.MissionPasswordChecker;
+import com.kloong.retreat.upload.FileUploadManager;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.IOException;
 
 @Controller
 @RequestMapping("/missions")
 public class MissionController {
 
-    private final static String MISSION_DIR_PREFIX = "html/missions/";
+    private final static String MISSION_DIR_PREFIX = "html/missions";
 
     private final MissionPasswordChecker missionPasswordChecker;
-    private final MissionClearLogger missionClearLogger;
+    private final MissionLogger missionLogger;
+    private final FileUploadManager fileUploadManager;
 
-    public MissionController(MissionPasswordChecker missionPasswordChecker, MissionClearLogger missionClearLogger) {
+    public MissionController(MissionPasswordChecker missionPasswordChecker, MissionLogger missionLogger, FileUploadManager fileUploadManager) {
         this.missionPasswordChecker = missionPasswordChecker;
-        this.missionClearLogger = missionClearLogger;
+        this.missionLogger = missionLogger;
+        this.fileUploadManager = fileUploadManager;
     }
 
     @GetMapping("/{stone}/1")
     public String firstMission(@PathVariable String stone) {
-        return MISSION_DIR_PREFIX + stone + "/1";
+        return MISSION_DIR_PREFIX + "/" + stone + "/1";
     }
 
     @PostMapping("/{stone}/{missionNumber}")
-    public String mission(@PathVariable String stone, @PathVariable int missionNumber, @RequestParam String password) {
+    public String missions(@PathVariable String stone, @PathVariable int missionNumber, @RequestParam String password, Model model) {
         String currentMission = stone + (missionNumber - 1);
 
         if (missionPasswordChecker.checkPassword(currentMission, password)) {
-            missionClearLogger.log(stone, missionNumber - 1, password, true);
-            return MISSION_DIR_PREFIX + stone + "/" + missionNumber;
+            missionLogger.log(stone, missionNumber - 1, password, true);
+            return MISSION_DIR_PREFIX + "/" + stone + "/" + missionNumber;
         }
 
-        missionClearLogger.log(stone, missionNumber - 1, password, false);
-        return MISSION_DIR_PREFIX + "wrongPassword";
+        missionLogger.log(stone, missionNumber - 1, password, false);
+        model.addAttribute("result", "Error!");
+        model.addAttribute("message", "잘못된 암호입니다.");
+        return MISSION_DIR_PREFIX + "/result";
     }
 
-    @PostMapping("/{stone}/{number}/img")
-    public String uploadImage(@RequestParam MultipartFile image, @PathVariable String stone, @PathVariable String number) {
-        if (!image.isEmpty()) {
-            try {
-                File upload = new File("/Users/kloong/Downloads/image.png");
-                System.out.println(image.getOriginalFilename());
-                System.out.println(image.getSize());
-                System.out.println(upload.getAbsolutePath());
-                image.transferTo(upload);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+    @PostMapping("/{stone}/{missionNumber}/upload")
+    public String uploadImage(HttpServletRequest request, @RequestParam MultipartFile image, @PathVariable String stone, @PathVariable int missionNumber, Model model) {
+        if (image.isEmpty()) {
+            model.addAttribute("result", "Error!");
+            model.addAttribute("message", "잘못된 이미지 파일입니다.");
+            return MISSION_DIR_PREFIX + "/result";
         }
 
-        return "/html/missions/wrongPassword";
+        File uploadedFile = fileUploadManager.upload(image);
+        String requestHostAndPort = request.getRequestURL().toString().replace(request.getRequestURI(), "");
+        missionLogger.log(stone, missionNumber, uploadedFile.getName(), requestHostAndPort);
+
+        model.addAttribute("result", "Success!");
+        model.addAttribute("message", "이미지 업로드 성공! 스톤 가디언즈의 연락을 기다리세요.");
+
+        return MISSION_DIR_PREFIX + "/result";
     }
 }
