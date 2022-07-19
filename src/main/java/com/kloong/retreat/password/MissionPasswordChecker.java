@@ -9,13 +9,13 @@ import java.util.Map;
 @Component
 public class MissionPasswordChecker {
 
-    private final static String PASSWORD_DIR_PATH = "passwords";
+    private final static String PASSWORD_DIR_PATH = "data/passwords";
 
     private final Map<String, String> missionPasswordMap;
 
     public MissionPasswordChecker() {
         missionPasswordMap = new HashMap<>();
-        convertPasswordFilesToMap();
+        initMissionPasswordMap();
     }
 
     public boolean checkPassword(String mission, String password) {
@@ -39,7 +39,7 @@ public class MissionPasswordChecker {
     *
     * ":" 왼쪽이 key, ":" 오른쪽이 value 가 된다.
     */
-    private void convertPasswordFilesToMap() {
+    private void initMissionPasswordMap() {
         File passwordDir = new File(PASSWORD_DIR_PATH);
 
         File[] passwordFiles = passwordDir.listFiles();
