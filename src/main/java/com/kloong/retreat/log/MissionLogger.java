@@ -12,42 +12,57 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
-public class MissionClearLogger {
+public class MissionLogger {
     private final static String WEBHOOKS_FILE_PATH = "data/webhooks.txt";
 
     private final Map<String, String> webhookMap;
     private final Map<String, String> stoneMissionMap;
 
-    public MissionClearLogger() {
+    public MissionLogger() {
         webhookMap = new HashMap<>();
         stoneMissionMap = new HashMap<>();
         initWebhookMap();
         initStoneMissionMap();
     }
 
-
     public void log(String stone, int missionNumber, String password, boolean clear) {
+        String messageBody = getClearMessageBody(stone, missionNumber, password, clear);
+        String webhook = webhookMap.get(stone);
+
+        postLogMessage(webhook, messageBody);
+    }
+
+    public void log(String stone, int missionNumber, String fileName, String requestHostAndPort) {
+        String messageBody = getUploadFileMessageBody(stone, missionNumber, fileName, requestHostAndPort);
+        String webhook = webhookMap.get(stone);
+
+        postLogMessage(webhook, messageBody);
+    }
+
+    private void postLogMessage(String webhook, String messageBody) {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
-        String messageBody = getMessageBody(stone, missionNumber, password, clear);
-
         HttpEntity<String> httpEntity = new HttpEntity<>(messageBody, httpHeaders);
 
-        restTemplate.postForEntity(webhookMap.get(stone), httpEntity, String.class);
+        restTemplate.postForEntity(webhook, httpEntity, String.class);
     }
 
-    private String getMessageBody(String stone, int missionNumber, String password, boolean clear) {
+    private String getClearMessageBody(String stone, int missionNumber, String password, boolean clear) {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("{\"text\":\"");
 
         stringBuilder.append(stoneMissionMap.get(stone)).append("-");
         stringBuilder.append("미션").append(missionNumber).append("-");
+
+        password = checkDoubleQuotationInPassword(password);
 
         if (clear) {
             stringBuilder.append("클리어");
@@ -60,6 +75,36 @@ public class MissionClearLogger {
         stringBuilder.append("\"}");
 
         return stringBuilder.toString();
+    }
+
+    private String getUploadFileMessageBody(String stone, int missionNumber, String fileName, String requestHostAndPort) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("{\"text\":\"");
+
+        stringBuilder.append(stoneMissionMap.get(stone)).append("-");
+        stringBuilder.append("미션").append(missionNumber).append("-");
+        stringBuilder.append("사진 업로드").append("-");
+
+        stringBuilder.append(requestHostAndPort).append("/files/").append(fileName);
+
+        stringBuilder.append("\"}");
+
+        return stringBuilder.toString();
+    }
+
+    private String checkDoubleQuotationInPassword(String password) {
+        StringBuilder stringBuffer = new StringBuilder();
+
+        Pattern pattern = Pattern.compile("\"");
+        Matcher matcher = pattern.matcher(password);
+
+        while (matcher.find()) {
+            matcher.appendReplacement(stringBuffer, "\\\\\"");
+        }
+        matcher.appendTail(stringBuffer);
+
+        return stringBuffer.toString();
     }
 
     private void initWebhookMap() {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>스톤 가디언즈의 시험</title>
@@ -28,9 +28,9 @@
 <div class="container">
 
     <section>
-        <h1 style="color: red">Error!</h1>
-        <p>
-            잘못된 암호입니다.
+        <h1 style="color: red" th:text="${result}">결과</h1>
+        <p th:text="${message}">
+            에러 메시지
         </p>
     </section>
 
