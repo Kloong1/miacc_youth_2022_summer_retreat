@@ -29,7 +29,7 @@ public class MissionController {
 
     @GetMapping("/{stone}/1")
     public String firstMission(@PathVariable String stone) {
-        return MISSION_DIR_PREFIX + "/" + stone + "/1";
+        return MISSION_DIR_PREFIX + "/" + stone.substring(0, stone.indexOf("-")) + "/1";
     }
 
     @PostMapping("/{stone}/{missionNumber}")
@@ -38,7 +38,7 @@ public class MissionController {
 
         if (missionPasswordChecker.checkPassword(currentMission, password)) {
             missionLogger.log(stone, missionNumber - 1, password, true);
-            return MISSION_DIR_PREFIX + "/" + stone + "/" + missionNumber;
+            return MISSION_DIR_PREFIX + "/" + stone.substring(0, stone.indexOf("-")) + "/" + missionNumber;
         }
 
         missionLogger.log(stone, missionNumber - 1, password, false);
