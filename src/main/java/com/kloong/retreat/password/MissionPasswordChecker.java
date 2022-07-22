@@ -57,7 +57,7 @@ public class MissionPasswordChecker {
 
                 String line;
                 while ((line = br.readLine()) != null) {
-                    String[] missionAndPassword = line.split(":");
+                    String[] missionAndPassword = line.split(";");
                     missionPasswordMap.put(missionAndPassword[0], missionAndPassword[1]);
                 }
             } catch (IOException e) {
