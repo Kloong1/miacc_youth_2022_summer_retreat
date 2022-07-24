@@ -23,8 +23,13 @@ abstract public class StoneMissionController {
     }
 
     @GetMapping
+    public String info() {
+        return missionViewDir + "/" + stone + "/info";
+    }
+
+    @GetMapping("/1")
     public String firstMission() {
-        return missionViewDir + "/" + stone + "/1";
+        return missionViewDir + "/" + stone + "/mission1";
     }
 
     @GetMapping("/{missionNumber}")
@@ -33,7 +38,7 @@ abstract public class StoneMissionController {
 
         if (missionPasswordChecker.checkPassword(currentMission, password)) {
             missionLogger.log(stone, missionNumber - 1, password, true);
-            return missionViewDir + "/" + stone + "/" + missionNumber;
+            return missionViewDir + "/" + stone + "/mission" + missionNumber;
         }
 
         missionLogger.log(stone, missionNumber - 1, password, false);

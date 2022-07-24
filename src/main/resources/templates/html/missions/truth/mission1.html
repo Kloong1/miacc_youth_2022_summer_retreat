@@ -28,59 +28,23 @@
 <div class="container">
 
     <div class="page-header">
-        <h1>디사이플 스톤 - 미션 #4</h1>
+        <h1>트루 스톤 - 미션 #1</h1>
     </div>
 
     <section>
-        <h1>안네 가족의 은신처</h1>
-        <p>
-            1944년 8월 1일을 마지막으로 안네의 일기는 끝이 난다.<br><br>
+        <h1>사진 인증</h1>
 
-            3일 뒤인 1944년 8월 4일, 은신처에 숨어 있던 안네의 가족 4명을 포함한 총 8명의 유대인이 누군가의 밀고로 인해 발각되어 독일 경찰에 잡혀갔기 때문이었다.<br><br>
+        <form method="post" action="/missions/truth-stone/1/upload" enctype="multipart/form-data">
+            <label> Photo:
+                <input name="image" type="file" accept="image/*">
+            </label>
+            <input class="btn" type="submit" value="Submit">
+        </form>
 
-            소녀 안네는 독일 경찰의 유대인 체포/압송을 피해 1942년 7월 부터 은신처에 숨어 살게 된다. 그리고 독일 경찰에게 발각되어 체포되기까지, 약 2년 2개월의 기간 동안 은신처 밖으로 한 발자국도 나가지 못했다.<br><br>
-
-            안네가 숨어 지내던 은신처는 현재까지 보존되어 있으며, 다음 링크를 통해 은신처의 모습을 직접 확인해 볼 수 있다.<br>
-            <a href="https://www.annefrank.org/en/anne-frank/secret-annex/" target="_blank">-> 안네의 은신처</a><br><br>
-
-            위 링크에 접속해서 안네를 포함한 8명의 사람들이 숨어 지냈던 은신처를 살펴 보고, 다음 문제를 풀어서 얻은 암호를 입력하라.
-        </p>
     </section>
 
     <section>
-        <h1>문제</h1>
-        <p>
-            <img src="/img/disciple/mission4/a.png" alt="a.png">
-        </p>
-        <p>
-            <img src="/img/disciple/mission4/b.png" alt="b.png">
-        </p>
-        <p>
-            <img src="/img/disciple/mission4/c.png" alt="c.png">
-        </p>
-        <p>
-            <img src="/img/disciple/mission4/d.png" alt="d.png">
-        </p>
-        <p>
-            <img src="/img/disciple/mission4/e.png" alt="e.png">
-        </p>
-    </section>
-
-    <section>
-        <p>
-            A = 병의 개수<br>
-            B = 시계가 가리키는 시간 (한 자리 숫자)<br>
-            C, D, E = 알파벳<br>
-        </p>
-
-        <p>
-            DECCAB = ?<br>
-            (암호는 소문자로 입력할 것)
-        </p>
-    </section>
-
-    <section>
-        <form action="/missions/disciple-stone/5" method="post">
+        <form action="/missions/truth-stone/2" method="post">
             <label> Password:
                 <input type="text" name="password" maxlength="30">
             </label>

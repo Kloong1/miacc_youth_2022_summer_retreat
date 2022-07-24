@@ -27,12 +27,12 @@ public class MissionController {
         this.fileUploadManager = fileUploadManager;
     }
 
-    @GetMapping("/{stone}/1")
+    //@GetMapping("/{stone}/1")
     public String firstMission(@PathVariable String stone) {
         return MISSION_DIR_PREFIX + "/" + stone.substring(0, stone.indexOf("-")) + "/1";
     }
 
-    @PostMapping("/{stone}/{missionNumber}")
+    //@PostMapping("/{stone}/{missionNumber}")
     public String missions(@PathVariable String stone, @PathVariable int missionNumber, @RequestParam String password, Model model) {
         String currentMission = stone + (missionNumber - 1);
 
@@ -47,7 +47,7 @@ public class MissionController {
         return MISSION_DIR_PREFIX + "/result";
     }
 
-    @PostMapping("/{stone}/{missionNumber}/upload")
+    //@PostMapping("/{stone}/{missionNumber}/upload")
     public String uploadImage(HttpServletRequest request, @RequestParam MultipartFile image, @PathVariable String stone, @PathVariable int missionNumber, Model model) {
         if (image.isEmpty()) {
             model.addAttribute("result", "Error!");
