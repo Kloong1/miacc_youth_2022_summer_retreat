@@ -28,23 +28,24 @@
 <div class="container">
 
     <div class="page-header">
-        <h1>트루 스톤 - 미션 #1</h1>
+        <h1>아가페 스톤 - 미션 #1</h1>
     </div>
 
     <section>
-        <h1>사진 인증</h1>
+        <h1>미션 장소로 이동하라!</h1>
+        <p>
+            문제의 정답에 해당하는 장소로 이동하세요.
+        </p>
 
-        <form method="post" action="/missions/truth-stone/1/upload" enctype="multipart/form-data">
-            <label> Photo:
-                <input name="image" type="file" accept="image/*">
-            </label>
-            <input class="btn" type="submit" value="Submit">
-        </form>
-
+        <h1>다음 제시어들이 가리키는 장소는?</h1>
+        <p>
+            자이언티, 청바지, 7번출구, 417명, 100주년<br>
+            (힌트: 정답은 11글자입니다)
+        </p>
     </section>
 
     <section>
-        <form action="/missions/truth-stone/2" method="post">
+        <form action="/missions/agape-stone/2" method="get">
             <label> Password:
                 <input type="text" name="password" maxlength="30">
             </label>
