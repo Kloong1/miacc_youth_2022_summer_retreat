@@ -18,7 +18,9 @@ public class MissionPasswordChecker {
         initMissionPasswordMap();
     }
 
-    public boolean checkPassword(String mission, String password) {
+    public boolean checkPassword(String stone, int missionNumber, String password) {
+        String mission = stone + missionNumber;
+
         if (!missionPasswordMap.containsKey(mission)) {
             System.out.println("Error! 존재하지 않는 미션입니다 - " + mission);
             return false;
@@ -30,14 +32,14 @@ public class MissionPasswordChecker {
     * 디렉토리 내의 모든 파일의 내용을 읽어서 map으로 변환한다.
     *
     * 파일 포맷
-    * {stone}{number}:{password}\n{stone}{number}:{password}...
+    * {stone}{number};{password}\n{stone}{number};{password}...
     *
     * ex)
-    *   disciple1:1q2w
-    *   disciple2:abcd123
+    *   disciple1;1q2w
+    *   disciple2;abcd123
     *   ...
     *
-    * ":" 왼쪽이 key, ":" 오른쪽이 value 가 된다.
+    * ";" 왼쪽이 key, ";" 오른쪽이 value 가 된다.
     */
     private void initMissionPasswordMap() {
         File passwordDir = new File(PASSWORD_DIR_PATH);
