@@ -31,8 +31,6 @@ public class StoneMissionFileUploadController {
     @PostMapping("/missions/{stoneURI}/{missionNumber}/upload")
     public String uploadImage(HttpServletRequest request, @RequestParam MultipartFile image, @PathVariable String stoneURI, @PathVariable int missionNumber, Model model) {
 
-        System.out.println("StoneMissionFileUploadController.uploadImage");
-
         if (!stones.containsURI(stoneURI) || image.isEmpty()) {
             model.addAttribute("result", "Error!");
             model.addAttribute("message", "잘못된 접근입니다.");
