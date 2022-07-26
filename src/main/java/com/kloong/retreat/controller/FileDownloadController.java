@@ -16,7 +16,7 @@ import java.io.IOException;
 
 @Controller
 @RequestMapping("/files")
-public class FileController {
+public class FileDownloadController {
 
     @GetMapping("/{fileName}")
     public ResponseEntity<byte[]> file(@PathVariable String fileName) {
@@ -28,10 +28,9 @@ public class FileController {
         }
 
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
-            byte[] bytes = fileInputStream.readAllBytes();
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            return new ResponseEntity<>(bytes, httpHeaders, HttpStatus.OK);
+            return new ResponseEntity<>(fileInputStream.readAllBytes(), httpHeaders, HttpStatus.OK);
         } catch (IOException ignored) {}
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
