@@ -3,7 +3,6 @@ package com.kloong.retreat.log;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
@@ -15,18 +14,17 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Component
-public class MissionLogger {
+public class StoneMissionLogger {
     private final static String WEBHOOKS_FILE_PATH = "data/webhooks.txt";
 
     private final Map<String, String> webhookMap;
-    private final Map<String, String> stoneMissionMap;
+    private final Map<String, String> missionInfoMap;
 
-    public MissionLogger() {
+    public StoneMissionLogger(Map<String, String> missionInfoMap) {
+        this.missionInfoMap = missionInfoMap;
+
         webhookMap = new HashMap<>();
-        stoneMissionMap = new HashMap<>();
         initWebhookMap();
-        initStoneMissionMap();
     }
 
     public void log(String stone, int missionNumber, String password, boolean clear) {
@@ -59,7 +57,7 @@ public class MissionLogger {
 
         stringBuilder.append("{\"text\":\"");
 
-        stringBuilder.append(stoneMissionMap.get(stone)).append("-");
+        stringBuilder.append(missionInfoMap.get(stone)).append("-");
         stringBuilder.append("미션").append(missionNumber).append("-");
 
         password = checkDoubleQuotationInPassword(password);
@@ -82,7 +80,7 @@ public class MissionLogger {
 
         stringBuilder.append("{\"text\":\"");
 
-        stringBuilder.append(stoneMissionMap.get(stone)).append("-");
+        stringBuilder.append(missionInfoMap.get(stone)).append("-");
         stringBuilder.append("미션").append(missionNumber).append("-");
         stringBuilder.append("사진 업로드").append("-");
 
@@ -125,12 +123,5 @@ public class MissionLogger {
         } catch (IOException e) {
             throw new RuntimeException("잘못된 Webhook 파일입니다. - " + webhooksFile.getAbsolutePath());
         }
-    }
-
-    private void initStoneMissionMap() {
-        stoneMissionMap.put("disciple", "[디사이플 스톤 | 광화문]");
-        stoneMissionMap.put("mission", "[미션 스톤 | 배재학당]");
-        stoneMissionMap.put("truth", "[트루 스톤 | 연세대]");
-        stoneMissionMap.put("agape", "[아가페 스톤 | 양화진]");
     }
 }
