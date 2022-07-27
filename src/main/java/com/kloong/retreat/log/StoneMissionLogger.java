@@ -129,7 +129,7 @@ public class MissionLogger {
 
     private void initStoneMissionMap() {
         stoneMissionMap.put("disciple", "[디사이플 스톤 | 광화문]");
-        stoneMissionMap.put("vision", "[비전 스톤 | 배재학당]");
+        stoneMissionMap.put("mission", "[미션 스톤 | 배재학당]");
         stoneMissionMap.put("truth", "[트루 스톤 | 연세대]");
         stoneMissionMap.put("agape", "[아가페 스톤 | 양화진]");
     }

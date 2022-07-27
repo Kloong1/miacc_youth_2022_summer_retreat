@@ -7,13 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class MissionPasswordChecker {
+public class StoneMissionPasswordChecker {
 
     private final static String PASSWORD_DIR_PATH = "data/passwords";
 
     private final Map<String, String> missionPasswordMap;
 
-    public MissionPasswordChecker() {
+    public StoneMissionPasswordChecker() {
         missionPasswordMap = new HashMap<>();
         initMissionPasswordMap();
     }

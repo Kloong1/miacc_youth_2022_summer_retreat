@@ -1,13 +1,13 @@
 package com.kloong.retreat.controller.mission;
 
-import com.kloong.retreat.log.MissionLogger;
-import com.kloong.retreat.password.MissionPasswordChecker;
+import com.kloong.retreat.log.StoneMissionLogger;
+import com.kloong.retreat.password.StoneMissionPasswordChecker;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/missions/truth-stone")
 public class TruthStoneMissionController extends StoneMissionController{
 
-    public TruthStoneMissionController(String missionViewDir, String stoneName, MissionPasswordChecker missionPasswordChecker, MissionLogger missionLogger) {
-        super(missionViewDir, stoneName, missionPasswordChecker, missionLogger);
+    public TruthStoneMissionController(String missionViewDir, String stoneName, StoneMissionPasswordChecker stoneMissionPasswordChecker, StoneMissionLogger stoneMissionLogger) {
+        super(missionViewDir, stoneName, stoneMissionPasswordChecker, stoneMissionLogger);
     }
 }

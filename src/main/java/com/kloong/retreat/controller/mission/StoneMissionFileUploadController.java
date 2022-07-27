@@ -1,6 +1,6 @@
 package com.kloong.retreat.controller.mission;
 
-import com.kloong.retreat.log.MissionLogger;
+import com.kloong.retreat.log.StoneMissionLogger;
 import com.kloong.retreat.stone.Stones;
 import com.kloong.retreat.upload.FileUploadManager;
 import org.springframework.ui.Model;
@@ -16,14 +16,14 @@ import java.io.File;
 @RequestMapping
 public class StoneMissionFileUploadController {
 
-    private final MissionLogger missionLogger;
+    private final StoneMissionLogger stoneMissionLogger;
     private final FileUploadManager fileUploadManager;
     private final Stones stones;
     private final String missionViewDir;
 
-    public StoneMissionFileUploadController(String missionViewDir, MissionLogger missionLogger, FileUploadManager fileUploadManager, Stones stones) {
+    public StoneMissionFileUploadController(String missionViewDir, StoneMissionLogger stoneMissionLogger, FileUploadManager fileUploadManager, Stones stones) {
         this.missionViewDir = missionViewDir;
-        this.missionLogger = missionLogger;
+        this.stoneMissionLogger = stoneMissionLogger;
         this.fileUploadManager = fileUploadManager;
         this.stones = stones;
     }
@@ -40,7 +40,7 @@ public class StoneMissionFileUploadController {
         String stoneName = stones.getName(stoneURI);
 
         File uploadedFile = fileUploadManager.upload(image);
-        missionLogger.log(stoneName, missionNumber, uploadedFile.getName(), extractHostAndPort(request));
+        stoneMissionLogger.log(stoneName, missionNumber, uploadedFile.getName(), extractHostAndPort(request));
 
         model.addAttribute("result", "Success!");
         model.addAttribute("message", "이미지 업로드 성공! 스톤 가디언즈의 연락을 기다리세요.");
