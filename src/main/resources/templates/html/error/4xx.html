@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<html lang="kr">
 <head>
     <meta charset="utf-8">
     <title>스톤 가디언즈의 시험</title>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="#">스톤 가디언즈의 시험</a>
+            <a class="brand">스톤 가디언즈의 시험</a>
         </div>
     </div>
 </div>
@@ -28,10 +28,8 @@
 <div class="container">
 
     <section>
-        <h1 style="color: red" th:text="${result}">결과</h1>
-        <p th:text="${message}">
-            에러 메시지
-        </p>
+        <h1 style="color: red">ERROR!</h1>
+        <p>잘못된 접근입니다.</p>
     </section>
 
     <section>

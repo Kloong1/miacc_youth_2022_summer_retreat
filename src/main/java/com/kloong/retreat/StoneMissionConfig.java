@@ -1,11 +1,8 @@
 package com.kloong.retreat;
 
-import com.kloong.retreat.controller.mission.*;
 import com.kloong.retreat.log.StoneMissionLogger;
-import com.kloong.retreat.password.StoneMissionPasswordChecker;
 import com.kloong.retreat.stone.Stone;
 import com.kloong.retreat.stone.Stones;
-import com.kloong.retreat.upload.FileUploadManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,8 +13,6 @@ import java.util.Map;
 
 @Configuration
 public class StoneMissionConfig {
-
-    private final static String missionViewDir = "html/missions";
 
     @Bean
     public Stones stones() {
@@ -30,40 +25,6 @@ public class StoneMissionConfig {
         return new Stones(stoneList);
     }
 
-    /*
-     * StoneMissionController - agape, disciple, mission, truth
-     */
-    @Bean
-    public StoneMissionController agapeStoneMissionController(StoneMissionPasswordChecker stoneMissionPasswordChecker, StoneMissionLogger stoneMissionLogger) {
-        return new AgapeStoneMissionController(missionViewDir, "agape", stoneMissionPasswordChecker, stoneMissionLogger);
-    }
-
-    @Bean
-    public StoneMissionController discipleStoneMissionController(StoneMissionPasswordChecker stoneMissionPasswordChecker, StoneMissionLogger stoneMissionLogger) {
-        return new DiscipleStoneMissionController(missionViewDir, "disciple", stoneMissionPasswordChecker, stoneMissionLogger);
-    }
-
-    @Bean
-    public StoneMissionController missionStoneMissionController(StoneMissionPasswordChecker stoneMissionPasswordChecker, StoneMissionLogger stoneMissionLogger) {
-        return new MissionStoneMissionController(missionViewDir, "mission", stoneMissionPasswordChecker, stoneMissionLogger);
-    }
-
-    @Bean
-    public StoneMissionController truthStoneMissionController(StoneMissionPasswordChecker stoneMissionPasswordChecker, StoneMissionLogger stoneMissionLogger) {
-        return new TruthStoneMissionController(missionViewDir, "truth", stoneMissionPasswordChecker, stoneMissionLogger);
-    }
-
-    /*
-     * StoneMissionFileUploadController
-     */
-    @Bean
-    public StoneMissionFileUploadController stoneMissionFileUploadController(StoneMissionLogger stoneMissionLogger, FileUploadManager fileUploadManager) {
-        return new StoneMissionFileUploadController(missionViewDir, stoneMissionLogger, fileUploadManager, stones());
-    }
-
-    /**
-     * stoneMissionLogger
-     */
     @Bean
     public StoneMissionLogger stoneMissionLogger() {
         Map<String, String> missionInfoMap = new HashMap<>();
