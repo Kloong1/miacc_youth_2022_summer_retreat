@@ -6,5 +6,7 @@ data
 
 src/test
 
+src/main/resources/static/video/*
+
 build/*
 out/*
