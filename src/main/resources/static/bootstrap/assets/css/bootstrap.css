@@ -878,6 +878,7 @@ li {
   margin-left: 0;
   line-height: 22px;
   list-style: none;
+  margin-bottom: 8px;
 }
 
 ul.unstyled,
