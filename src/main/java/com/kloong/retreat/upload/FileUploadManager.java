@@ -11,8 +11,8 @@ public class FileUploadManager {
 
     private static long id = 0;
 
-//    public final static String UPLOAD_DIR_PATH = "/home/ubuntu/upload";
-    public final static String UPLOAD_DIR_PATH = "/Users/kloong/temp";
+    public final static String UPLOAD_DIR_PATH = "/home/ubuntu/upload";
+//    public final static String UPLOAD_DIR_PATH = "/Users/kloong/temp";
 
     public File upload(MultipartFile file) {
         String fileName = ++id + "_" + file.getOriginalFilename();
