@@ -11,9 +11,9 @@
 비밀번호 입력 외에도 파일 업로드 기능을 통해 인증샷을 업로드하는 기능도 있습니다.
 
 <p align="center">
-  <img height="500" alt="image" src="https://user-images.githubusercontent.com/16686954/197393524-17842ad3-b19f-4faa-963b-d764915b7f14.jpeg">
-  <img height="500" alt="image" src="https://user-images.githubusercontent.com/16686954/197394312-67a56f20-e963-441d-9225-91562df71b92.jpeg">
-  <img height="500" alt="image" src="https://user-images.githubusercontent.com/16686954/197394393-23273953-6122-4981-96c9-ccd81d02d21c.jpeg">
+  <img height="400" alt="image" src="https://user-images.githubusercontent.com/16686954/197393524-17842ad3-b19f-4faa-963b-d764915b7f14.jpeg">
+  <img height="400" alt="image" src="https://user-images.githubusercontent.com/16686954/197394312-67a56f20-e963-441d-9225-91562df71b92.jpeg">
+  <img height="400" alt="image" src="https://user-images.githubusercontent.com/16686954/197394393-23273953-6122-4981-96c9-ccd81d02d21c.jpeg">
 </p>
 
 ### 2) 모니터링
